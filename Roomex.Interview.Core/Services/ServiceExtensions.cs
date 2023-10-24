@@ -14,6 +14,7 @@ namespace Roomex.Interview.Core.Services
             services.AddScoped<IRegionInfoResolver, RegionInfoResolver>();
             services.AddScoped<IDistanceCalculatorFactory, DistanceCalculatorFactory>();
             services.AddScoped<ILocaleFormatterFactory, LocaleFormatterFactory>();
+            services.AddScoped<IDistancesCache, DistancesCache>();
         }
     }
 }
