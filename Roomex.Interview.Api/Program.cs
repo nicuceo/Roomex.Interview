@@ -6,6 +6,10 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+
+builder.Logging.AddConsole();
+
 builder.Services.AddServices();
 
 builder.Services.AddMemoryCache();
@@ -48,4 +52,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.Logger.LogInformation("Starting the app");
+
 app.Run();
+
+public partial class Program { }

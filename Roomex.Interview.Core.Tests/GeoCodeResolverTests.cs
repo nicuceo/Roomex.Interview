@@ -4,6 +4,7 @@ using Roomex.Interview.Core.Services.Interfaces;
 using Roomex.Interview.Core.Services;
 using System.Net;
 using System.Text.Json;
+using Microsoft.Extensions.Logging;
 
 namespace Roomex.Interview.Core.Tests
 {
@@ -13,6 +14,7 @@ namespace Roomex.Interview.Core.Tests
         public async Task When_Receiving_Location_Successfully_Returns_GeoLocationPoint()
         {
             // Arrange
+            var loggerMock = new Mock<ILogger<GeoCodeResolver>>();
             var httpClientFactoryMock = new Mock<IHttpClientFactory>();
             var configurationFacadeMock = new Mock<IConfigurationFacade>();
             var httpClientMock = new Mock<HttpClient>();
@@ -20,7 +22,7 @@ namespace Roomex.Interview.Core.Tests
             httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>())).Returns(httpClientMock.Object);
             configurationFacadeMock.Setup(x => x.GetGeocodeUri()).Returns("https://geocode.maps.co/search");
 
-            var resolver = new GeoCodeResolver(httpClientFactoryMock.Object, configurationFacadeMock.Object);
+            var resolver = new GeoCodeResolver(loggerMock.Object, httpClientFactoryMock.Object, configurationFacadeMock.Object);
 
             var cityName = "Dublin";
             var expectedGeoLocationPoint = new GeoLocationPoint { Latitude = 53.3497645, Longitude = -6.2602732 };
@@ -44,6 +46,7 @@ namespace Roomex.Interview.Core.Tests
         public async Task When_Receiving_Unsuccessful_Response_From_Geocode_Throws_Exception()
         {
             // Arrange
+            var loggerMock = new Mock<ILogger<GeoCodeResolver>>();
             var httpClientFactoryMock = new Mock<IHttpClientFactory>();
             var configurationFacadeMock = new Mock<IConfigurationFacade>();
             var httpClientMock = new Mock<HttpClient>();
@@ -51,7 +54,7 @@ namespace Roomex.Interview.Core.Tests
             httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>())).Returns(httpClientMock.Object);
             configurationFacadeMock.Setup(x => x.GetGeocodeUri()).Returns("https://geocode.maps");
 
-            var resolver = new GeoCodeResolver(httpClientFactoryMock.Object, configurationFacadeMock.Object);
+            var resolver = new GeoCodeResolver(loggerMock.Object, httpClientFactoryMock.Object, configurationFacadeMock.Object);
 
             var cityName = "Dublin";
 
@@ -68,6 +71,7 @@ namespace Roomex.Interview.Core.Tests
         public async Task When_Receiving_No_Matching_GeoLocation_Points_Throws_Exception()
         {
             // Arrange
+            var loggerMock = new Mock<ILogger<GeoCodeResolver>>();
             var httpClientFactoryMock = new Mock<IHttpClientFactory>();
             var configurationFacadeMock = new Mock<IConfigurationFacade>();
             var httpClientMock = new Mock<HttpClient>();
@@ -75,7 +79,7 @@ namespace Roomex.Interview.Core.Tests
             httpClientFactoryMock.Setup(x => x.CreateClient(It.IsAny<string>())).Returns(httpClientMock.Object);
             configurationFacadeMock.Setup(x => x.GetGeocodeUri()).Returns("https://geocode.maps.co/search");
 
-            var resolver = new GeoCodeResolver(httpClientFactoryMock.Object, configurationFacadeMock.Object);
+            var resolver = new GeoCodeResolver(loggerMock.Object, httpClientFactoryMock.Object, configurationFacadeMock.Object);
 
             var cityName = "NonExistentCity";
 

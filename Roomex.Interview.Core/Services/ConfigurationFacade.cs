@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Roomex.Interview.Core.Constants;
 using Roomex.Interview.Core.Services.Interfaces;
 
@@ -6,10 +7,12 @@ namespace Roomex.Interview.Core.Services
 {
     public class ConfigurationFacade : IConfigurationFacade
     {
+        private readonly ILogger<ConfigurationFacade> _logger;
         private readonly IConfiguration _configuration;
 
-        public ConfigurationFacade(IConfiguration configuration)
+        public ConfigurationFacade(ILogger<ConfigurationFacade> logger, IConfiguration configuration)
         {
+            _logger = logger;
             _configuration = configuration;
         }
 
@@ -17,8 +20,15 @@ namespace Roomex.Interview.Core.Services
         public string GetDefaultLocale() => GetStringConfiguration(ConfigurationKey.DefaultLocale);
 
         private string GetStringConfiguration(string configurationKey)
-            => _configuration[configurationKey]
-                     ?? throw new ($"{configurationKey} configuration is missing.");
+        {
+            var configurationValue = _configuration[configurationKey];
+            if (configurationValue is null)
+            {
+                _logger.LogError($"Configuration is missing: {configurationKey}");
+                throw new($"{configurationKey} configuration is missing.");
+            }
+            return configurationValue;
+        }
 
     }
 }

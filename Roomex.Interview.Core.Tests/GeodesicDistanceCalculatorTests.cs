@@ -1,5 +1,4 @@
-﻿using Roomex.Interview.Core.Constants;
-using Roomex.Interview.Core.Models;
+﻿using Roomex.Interview.Core.Models;
 using Roomex.Interview.Core.Services;
 
 namespace Roomex.Interview.Core.Tests

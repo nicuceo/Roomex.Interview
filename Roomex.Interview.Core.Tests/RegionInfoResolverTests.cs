@@ -1,6 +1,7 @@
 ﻿using Moq;
 using Roomex.Interview.Core.Services.Interfaces;
 using Roomex.Interview.Core.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Roomex.Interview.Core.Tests
 {
@@ -11,9 +12,10 @@ namespace Roomex.Interview.Core.Tests
         {
             // Arrange
             var configurationFacadeMock = new Mock<IConfigurationFacade>();
+            var loggerMock = new Mock<ILogger<RegionInfoResolver>>();
             configurationFacadeMock.Setup(x => x.GetDefaultLocale()).Returns("ro-RO");
 
-            var resolver = new RegionInfoResolver(configurationFacadeMock.Object);
+            var resolver = new RegionInfoResolver(loggerMock.Object, configurationFacadeMock.Object);
             var header = "en-US;en";
 
             // Act
@@ -28,9 +30,11 @@ namespace Roomex.Interview.Core.Tests
         {
             // Arrange
             var configurationFacadeMock = new Mock<IConfigurationFacade>();
+            var loggerMock = new Mock<ILogger<RegionInfoResolver>>();
+
             configurationFacadeMock.Setup(x => x.GetDefaultLocale()).Returns("ro-RO");
 
-            var resolver = new RegionInfoResolver(configurationFacadeMock.Object);
+            var resolver = new RegionInfoResolver(loggerMock.Object, configurationFacadeMock.Object);
 
             // Act
             var result = resolver.Resolve(null);
@@ -44,9 +48,10 @@ namespace Roomex.Interview.Core.Tests
         {
             // Arrange
             var configurationFacadeMock = new Mock<IConfigurationFacade>();
+            var loggerMock = new Mock<ILogger<RegionInfoResolver>>();
             configurationFacadeMock.Setup(x => x.GetDefaultLocale()).Returns("en-US");
 
-            var resolver = new RegionInfoResolver(configurationFacadeMock.Object);
+            var resolver = new RegionInfoResolver(loggerMock.Object, configurationFacadeMock.Object);
             var invalidHeader = "InvalidHeader";
 
             // Act and Assert

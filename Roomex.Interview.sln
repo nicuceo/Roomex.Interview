@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomex.Interview.Api", "Roomex.Interview.Api\Roomex.Interview.Api.csproj", "{BED9398D-CCC6-4125-92DD-4EA4B0788B94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roomex.Interview.Api", "Roomex.Interview.Api\Roomex.Interview.Api.csproj", "{BED9398D-CCC6-4125-92DD-4EA4B0788B94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomex.Interview.Core", "Roomex.Interview.Core\Roomex.Interview.Core.csproj", "{1C3BAD8E-1407-4730-934C-8A0F662C3DE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roomex.Interview.Core", "Roomex.Interview.Core\Roomex.Interview.Core.csproj", "{1C3BAD8E-1407-4730-934C-8A0F662C3DE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomex.Interview.Core.Tests", "Roomex.Interview.Core.Tests\Roomex.Interview.Core.Tests.csproj", "{BAFDDE94-F1EA-46A1-AB5F-A5201D86B78F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roomex.Interview.Core.Tests", "Roomex.Interview.Core.Tests\Roomex.Interview.Core.Tests.csproj", "{BAFDDE94-F1EA-46A1-AB5F-A5201D86B78F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomex.Interview.Integration.Tests", "Roomex.Interview.Integration.Tests\Roomex.Interview.Integration.Tests.csproj", "{63D1AB55-BEA0-4B5C-944A-25524DF98D43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BAFDDE94-F1EA-46A1-AB5F-A5201D86B78F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAFDDE94-F1EA-46A1-AB5F-A5201D86B78F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAFDDE94-F1EA-46A1-AB5F-A5201D86B78F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63D1AB55-BEA0-4B5C-944A-25524DF98D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63D1AB55-BEA0-4B5C-944A-25524DF98D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63D1AB55-BEA0-4B5C-944A-25524DF98D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63D1AB55-BEA0-4B5C-944A-25524DF98D43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

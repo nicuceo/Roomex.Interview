@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Caching.Memory;
 using Moq;
 using Roomex.Interview.Core.Models;
 using Roomex.Interview.Core.Services.Interfaces;
